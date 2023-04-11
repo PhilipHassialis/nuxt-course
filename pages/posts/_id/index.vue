@@ -1,7 +1,7 @@
 <template>
   <div class="single-post-page">
     <scetion class="post">
-      <h1 class="post-title">Post tilte</h1>
+      <h1 class="post-title">Post title</h1>
       <div class="post-details">
         <div class="post-detail">Last updated on:</div>
         <div class="post-detail">Written by:</div>
