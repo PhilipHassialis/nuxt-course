@@ -3,33 +3,19 @@
     <section class="intro">
       <h1>Get the lastest news</h1>
     </section>
-    <div class="featured-posts">
-      <PostPreview
-        id="1"
-        title="Hello there"
-        previewText="my preview text"
-        thumbnail="https://images.livemint.com/img/2023/01/01/1600x900/tech_1672594997400_1672595005161_1672595005161.jpg"
-      />
-      <PostPreview
-        id="2"
-        title="Second post"
-        previewText="my second port"
-        thumbnail="https://www.brookings.edu/wp-content/uploads/2017/11/metro_20171121_tech-empowers-tech-polarizes-mark-muro.jpg"
-      />
-    </div>
+    <PostList />
   </div>
 </template>
 
 <script>
-import PostPreview from "@/components/PostPreview.vue";
+import PostList from "@/components/Posts/PostList.vue";
 
 export default {
   components: {
-    PostPreview,
+    PostList,
   },
 };
 </script>
-
 
 <style scoped>
 .intro {
