@@ -1,12 +1,14 @@
 <template>
   <section class="post-list">
     <PostPreview
+      :is-admin="isAdmin"
       id="1"
       title="Hello there"
       previewText="my preview text"
       thumbnail="https://images.livemint.com/img/2023/01/01/1600x900/tech_1672594997400_1672595005161_1672595005161.jpg"
     />
     <PostPreview
+      :is-admin="isAdmin"
       id="2"
       title="Second post"
       previewText="my second port"
@@ -21,6 +23,10 @@ import PostPreview from "@/components/Posts/PostPreview.vue";
 export default {
   components: {
     PostPreview,
+  },
+  props: {
+    isAdmin: Boolean,
+    default: false,
   },
 };
 </script>
