@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the lastest news</h1>
     </section>
-    <PostList />
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
@@ -13,6 +13,26 @@ import PostList from "@/components/Posts/PostList.vue";
 export default {
   components: {
     PostList,
+  },
+  data() {
+    return {
+      loadedPosts: [
+        {
+          id: "1",
+          title: "Post 1",
+          previewText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
+          thumbnail: "https://picsum.photos/200/300?cache=1",
+        },
+        {
+          id: "2",
+          title: "Post 2",
+          previewText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
+          thumbnail: "https://picsum.photos/200/300?cache=2",
+        },
+      ],
+    };
   },
 };
 </script>

@@ -1,18 +1,13 @@
 <template>
   <section class="post-list">
     <PostPreview
+      v-for="post in posts"
+      :key="post.id"
       :is-admin="isAdmin"
-      id="1"
-      title="Hello there"
-      previewText="my preview text"
-      thumbnail="https://images.livemint.com/img/2023/01/01/1600x900/tech_1672594997400_1672595005161_1672595005161.jpg"
-    />
-    <PostPreview
-      :is-admin="isAdmin"
-      id="2"
-      title="Second post"
-      previewText="my second port"
-      thumbnail="https://www.brookings.edu/wp-content/uploads/2017/11/metro_20171121_tech-empowers-tech-polarizes-mark-muro.jpg"
+      :id="post.id"
+      :title="post.title"
+      :previewText="post.previewText"
+      :thumbnail="post.thumbnail"
     />
   </section>
 </template>
@@ -25,8 +20,14 @@ export default {
     PostPreview,
   },
   props: {
-    isAdmin: Boolean,
-    default: false,
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    posts: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
