@@ -1,12 +1,14 @@
 <template>
   <div class="single-post-page">
     <scetion class="post">
-      <h1 class="post-title">Post title</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on:</div>
-        <div class="post-detail">Written by:</div>
+        <div class="post-detail">
+          Last updated on: {{ loadedPost.updateDate }}
+        </div>
+        <div class="post-detail">Written by: {{ loadedPost.author }}</div>
       </div>
-      <p class="post-content">Post content</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </scetion>
     <section class="post-feedback">
       <p>
@@ -16,6 +18,28 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: "1",
+          title: `Post (ID: ${context.params.id})`,
+          previewText:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          thumbnail: "https://picsum.photos/200/300?cache=1",
+          author: "Philip",
+          updateDate: new Date(),
+          content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
+        },
+      });
+    }, 1500);
+  },
+};
+</script>
 
 <style scoped>
 .single-post-page {
