@@ -14,27 +14,10 @@ export default {
   components: {
     PostList,
   },
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          {
-            id: "1",
-            title: "Post 1",
-            previewText:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
-            thumbnail: "https://picsum.photos/200/300?cache=1",
-          },
-          {
-            id: "2",
-            title: "Post 2",
-            previewText:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
-            thumbnail: "https://picsum.photos/200/300?cache=2",
-          },
-        ],
-      });
-    }, 1500);
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    },
   },
 };
 </script>
