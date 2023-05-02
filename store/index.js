@@ -1,3 +1,4 @@
+import axios from "axios";
 import Vuex from "vuex";
 
 const createStore = () => {
@@ -12,27 +13,18 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            vuexContext.commit("setPosts", [
-              {
-                id: "1",
-                title: "Post 1",
-                previewText:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
-                thumbnail: "https://picsum.photos/200/300?cache=1",
-              },
-              {
-                id: "2",
-                title: "Post 2",
-                previewText:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nunc nisl ultricies nunc, nec",
-                thumbnail: "https://picsum.photos/200/300?cache=2",
-              },
-            ]);
-            resolve();
-          }, 1500);
-        });
+        return axios
+          .get(
+            "https://nuxt-course-bb942-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
+          )
+          .then((res) => {
+            const postsArray = [];
+            for (const key in res.data) {
+              postsArray.push({ ...res.data[key], id: key });
+            }
+            vuexContext.commit("setPosts", postsArray);
+          });
+        // .catch((e) => context.error(e));
       },
       setPosts(vuexContext, posts) {
         vuexContext.commit("setPosts", posts);
